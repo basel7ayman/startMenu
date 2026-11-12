@@ -28,8 +28,11 @@
             "label": "Build and Run",
             "type": "shell",
             "command": "xterm",
-             //-e bash -c 'echo Terminal works; read -p "Press Enter to close..."'
              "args": [
+                "-bg",
+                "black",
+                "-fg",
+                "white",
                 "-fa", 
                 "Ubuntu Mono", 
                 "-fs",
@@ -37,7 +40,7 @@
                 "-e",
                 "bash",
                 "-c",
-                "g++ '${workspaceFolder}/src/*.cpp' -o '${workspaceFolder}/${fileBasenameNoExtension}' && '${workspaceFolder}/${fileBasenameNoExtension}'; echo; read -p 'Press Enter to close...'"
+                "g++ '${workspaceFolder}/src/*.cpp' -o '${workspaceFolder}/${fileBasenameNoExtension}' && '${workspaceFolder}/${fileBasenameNoExtension}'"
             ],
             "problemMatcher": ["$gcc"],
             "group": {
