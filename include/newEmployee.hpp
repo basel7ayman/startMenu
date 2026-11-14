@@ -10,10 +10,9 @@ class Employee {
 
  public:
   Employee();
-  Employee(std::string name, int salary);
 
-  void setName(std::string name);
-  void setSalary(int salary);
+  void setName(std::string);
+  void setSalary(int);
 
   std::string getName() const;
   int getSalary() const;

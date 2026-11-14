@@ -101,5 +101,5 @@ void printMenu() {
         if (selectedIndex < 0) selectedIndex = 2;
       }
     }
-  } while (byte1 != '\n' || selectedIndex != 2);
+  } while ((byte1 != '\n' || selectedIndex != 2) && byte1 != 'q');
 }
