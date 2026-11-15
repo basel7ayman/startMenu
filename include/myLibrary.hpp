@@ -15,7 +15,7 @@ void moveTo(int row, int col);
 void color(std::string a);
 void clearScreen();
 void defaultColor();
-void printMenu();
+void printMenu(std::string);
 void home(char);
 
 #endif  // MYLIBRARY_HPP

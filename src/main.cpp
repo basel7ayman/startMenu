@@ -1,7 +1,7 @@
 #include "../include/myLibrary.hpp"
 
 int main() {
-  printMenu();
+  printMenu(MAGENTA);
 
   return 0;
 }

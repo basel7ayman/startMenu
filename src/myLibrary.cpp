@@ -6,7 +6,7 @@
 #define row 5
 #define col 25
 
-int selectedIndex = 0;
+int selectedIndex = -1;
 
 void breakLine() {
   std::cout << std::endl
@@ -28,7 +28,7 @@ void clearScreen() {
             << "\033[H" << std::flush;
 }
 
-void printMenu() {
+void printMenu(std::string x) {
   clearScreen();
 
   moveTo(row, col);
@@ -43,7 +43,7 @@ void printMenu() {
     for (int i = 1; i <= 3; i++) {
       moveTo(row + i, col);
       if (selectedIndex == i - 1) {
-        color(RED);
+        color(x);
         std::cout << "→ ";
       } else
         defaultColor();
@@ -63,7 +63,7 @@ void printMenu() {
     if (byte1 == '\n' && selectedIndex == 0) {
       clearScreen();
       emp();
-      printMenu();
+      printMenu(x);
     }
     if (byte1 == '\n' && selectedIndex == 1) {
       clearScreen();
