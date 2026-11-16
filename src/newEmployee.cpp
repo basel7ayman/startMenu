@@ -25,7 +25,7 @@ void Employee::display() const {
             << ", Salary: " << Employee::getSalary() << "LE" << std::endl;
 }
 
-void emp() {
+void empStatic() {
   int count;
   std::string name;
   int salary;
@@ -36,7 +36,9 @@ void emp() {
   if (std::cin.fail() || count <= 0 || employeeCount + count > maxEmployees) {
     std::cin.clear();
     std::cin.ignore(10000, '\n');
-    std::cout << "Invalid employee count." << std::endl;
+    std::cout << "Invalid employee count." << std::endl << std::flush;
+    std::cout << "Try Again with lower number." << std::endl << std::flush;
+    wait(1);
     return;
   }
 
@@ -45,6 +47,13 @@ void emp() {
 
     std::cout << "Enter name: " << std::endl;
     std::cin >> name;
+
+    if (checkName(name) == 0) {
+      std::cout << "Invalid name, please try again." << std::endl;
+      std::cin.clear();
+      i--;  // repeat this employee
+      continue;
+    }
 
     std::cout << "Enter salary: " << std::endl;
     std::cin >> salary;

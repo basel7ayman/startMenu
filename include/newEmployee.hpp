@@ -20,7 +20,7 @@ class Employee {
   void display() const;
 };
 
-void emp();
+void empStatic();
 void storeData(std::string, int);
 void displayEmp();
 

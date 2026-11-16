@@ -1,3 +1,4 @@
+#include "../include/dynamicArray.hpp"
 #include "../include/myLibrary.hpp"
 
 #define RED "\033[31m"
@@ -8,7 +9,10 @@
 #define CYAN "\033[36m"
 
 int main() {
-  printMenu(MAGENTA);
+  struct dynArr d;
+  initArr(d);
+  printMenu(MAGENTA, d);
+  freeArr(d);
 
   return 0;
 }

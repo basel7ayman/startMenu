@@ -1,6 +1,7 @@
 #include "../include/myLibrary.hpp"
 
 #include "../include/arrowInput.hpp"
+#include "../include/dynamicArray.hpp"
 #include "../include/newEmployee.hpp"
 
 #define row 5
@@ -25,10 +26,45 @@ void defaultColor() { std::cout << "\033[0m"; }
 
 void clearScreen() {
   std::cout << "\033[2J"
+            << "\033[3J"
             << "\033[H" << std::flush;
 }
 
-void printMenu(std::string x) {
+void wait(int x) {
+  if (x < 10) {
+    std::this_thread::sleep_for(std::chrono::seconds(x));
+  } else {
+    std::this_thread::sleep_for(std::chrono::milliseconds(x));
+  }
+}
+
+std::string toLower(std::string arr) {
+  int counter = 0;
+  while (arr[counter] != '\0') {
+    if (arr[counter] >= 'A' && arr[counter] <= 'Z') {
+      arr[counter] += 32;
+    }
+
+    counter++;
+  }
+  return arr;
+}
+
+bool checkName(std::string x) {
+  x = toLower(x);
+  int counter = 0;
+
+  while (x[counter] != '\0') {
+    if (x[counter] < 97 || x[counter] > 122) {
+      return false;
+    }
+    counter++;
+  }
+
+  return true;
+}
+
+void printMenu(std::string x, dynArr& d) {
   clearScreen();
 
   moveTo(row, col);
@@ -62,12 +98,14 @@ void printMenu(std::string x) {
     // CHANGED: print readable names for Enter and ESC instead of raw bytes
     if (byte1 == '\n' && selectedIndex == 0) {
       clearScreen();
-      emp();
-      printMenu(x);
+      empDynamic(d);
+      clearScreen();
+      moveTo(row, col);
+      std::cout << "Main Menu" << std::endl;
     }
     if (byte1 == '\n' && selectedIndex == 1) {
       clearScreen();
-      displayEmp();
+      displayEmployees(d);
 
       std::cout << std::endl
                 << "Press 'Esc' to return to main menu..." << std::flush;
