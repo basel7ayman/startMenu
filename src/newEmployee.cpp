@@ -33,7 +33,9 @@ void emp() {
   std::cout << "Enter employee count: ";
   std::cin >> count;
 
-  if (count <= 0 || employeeCount + count > maxEmployees) {
+  if (std::cin.fail() || count <= 0 || employeeCount + count > maxEmployees) {
+    std::cin.clear();
+    std::cin.ignore(10000, '\n');
     std::cout << "Invalid employee count." << std::endl;
     return;
   }
@@ -46,8 +48,13 @@ void emp() {
 
     std::cout << "Enter salary: " << std::endl;
     std::cin >> salary;
+
     if (std::cin.fail()) {
-      std::cout << "Invalid syntax." << std::endl;
+      std::cout << "Invalid salary, please try again." << std::endl;
+      std::cin.clear();
+      std::cin.ignore(10000, '\n');
+      i--;  // repeat this employee
+      continue;
     }
 
     storeData(name, salary);

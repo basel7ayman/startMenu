@@ -9,6 +9,5 @@ void color(std::string a);
 void clearScreen();
 void defaultColor();
 void printMenu(std::string);
-void home(char);
 
 #endif  // MYLIBRARY_HPP
